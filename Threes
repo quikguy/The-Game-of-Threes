@@ -1,0 +1,86 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Threes
+{
+    class Program
+    {
+        public static void Main(String[] args)
+        {
+
+            Console.WriteLine("Welcome to... \"The Game Of Threes\"!");
+            Console.WriteLine("Winter is coming. Do you dare to play?");
+            Console.WriteLine();
+
+            Int64 x, y, z, i = 0;
+            bool replay = true;
+            string input;
+
+            while (replay)
+            {
+                try
+                {
+                    Console.WriteLine("Enter a whole number here:\t\t");
+                    Console.WriteLine();
+
+                    y = Convert.ToInt64(Console.ReadLine());
+                    Console.WriteLine("You selected {0}!", y);
+
+                    while (y != 1)
+                    {
+                        if (y != 1)
+                        {
+                            x = y;
+                            y = x / 3;
+
+                            if (x % 3 == 0)
+                            {
+                                Console.WriteLine("{0} divided by THREE is... {1}", x, y);
+                                i++;
+                            }
+                            else if (x % 3 != 0)
+                            {
+                                    z = x - 1;
+
+                            if (z == 1)
+                            {
+                                    Console.WriteLine("{0} minus ONE is... {1}", x, z);
+                                    i++;
+                                    y = z;
+                            }
+                            else if (z % 3 == 0)
+                            {
+                                    Console.WriteLine("{0} minus ONE is... {1}", x, z);
+                                    i++;
+                                    y = z;
+                            }
+                            else if (z % 3 != 0)
+                            {
+                                    z = x + 1;
+                                    Console.WriteLine("{0} plus ONE is... {1}", x, z);
+                                    i++;
+                                    y = z;
+                            }
+                            }
+                        }
+                    }
+                    if (y == 1)
+                    {
+                        Console.WriteLine("You made it to ONE in only {0} rounds! You win!", i);
+                        Console.WriteLine("Want to play again? (y/n)");
+                        input = Console.ReadLine().ToLower();
+                        replay = input == "y" || input == "yes";
+                    }
+                }
+            catch (System.Exception)
+                {
+                Console.WriteLine("That was not a valid whole number, sucka!");
+                    Console.WriteLine();
+                }             
+            }
+        }
+    }
+}
